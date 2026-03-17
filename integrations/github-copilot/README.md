@@ -6,12 +6,11 @@ agents use the existing `.md` + YAML frontmatter format.
 ## Install
 
 ```bash
-# Copy all agents to your GitHub Copilot agents directories
+# Copy all agents to your GitHub Copilot agents directory
 ./scripts/install.sh --tool copilot
 
 # Or manually copy a category
 cp engineering/*.md ~/.github/agents/
-cp engineering/*.md ~/.copilot/agents/
 ```
 
 ## Activate an Agent

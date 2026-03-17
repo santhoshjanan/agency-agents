@@ -251,6 +251,106 @@ grep "^### \[x\]" project-tasks/*-tasklist.md
 - **Make decisions**: "All tasks passed QA validation, spawning RealityIntegration for final check"
 - **Report status**: "Pipeline 75% complete, 2 tasks remaining, on track for completion"
 
+## 📚 Historical Research & Content Creation Pipeline
+
+For projects involving historical analysis, fact-checking, or narrative content:
+
+### Phase 0: Historical Research Foundation (Optional, when needed)
+```bash
+# Spawn Historical Research Specialist for comprehensive analysis
+"Please spawn Historical Research Specialist to analyze [historical event/claim]. Provide:
+1. Fact-anchored analysis (causes, parties, backgrounds, consequences, long-term effects)
+2. Primary source documentation
+3. Historiographic interpretation 
+4. Conspiracy theory and propaganda deconstruction
+5. Evidence hierarchy and source quality assessment
+Save comprehensive analysis to project-docs/historical-analysis.md"
+
+# Verify research deliverables
+ls -la project-docs/historical-analysis.md
+```
+
+### Phase 1a: Research-to-Content Handoff
+After Historical Research Specialist completes analysis:
+```bash
+# Pass to Content Creator with fact-check briefing
+"Please spawn marketing-content-creator to craft narrative content based on historical analysis at project-docs/historical-analysis.md. 
+
+CONSTRAINTS:
+- Only use facts marked as 'High Confidence' or 'Consensus History'
+- Acknowledge genuine historiographic debates where they exist
+- DO NOT PROMOTE these false narratives: [List from research]
+- Cite sources for major claims
+- Include historical context section
+- Flag any areas where evidence is limited
+
+Target audience: [Audience], Format: [Article/Video/Long-form], Length: [word count]"
+```
+
+### Phase 1b: Content Verification Loop
+```bash
+# After content creation, validate accuracy
+"Please spawn Historical Research Specialist to fact-check content at [content-file]. 
+Verify that:
+1. All historical claims match source documentation
+2. No conspiracy theories or propaganda are presented as fact
+3. Historiographic debates are represented fairly if mentioned
+4. Source citations are accurate
+Provide APPROVED or NEEDS_REVISION with specific feedback."
+```
+
+## 🌐 Geopolitical Intelligence & Analysis Pipeline
+
+For projects involving geopolitical analysis, conflict assessment, or foreign policy research:
+
+### Phase 0: Geopolitical Intelligence Gathering (When needed)
+```bash
+# Spawn Geopolitical Analysis Specialist for comprehensive analysis
+"Please spawn Geopolitical Analysis Specialist to analyze [Conflict/Crisis/Region]. Provide:
+1. Multi-source intelligence gathering from all parties' official positions
+2. Fact-tier assessment: DOCUMENTED vs. OFFICIAL CLAIM vs. ALLEGED vs. PROPAGANDA
+3. Explicit source citations for all major claims
+4. Propaganda narrative analysis with technique identification and beneficiary analysis
+5. Strategic interests map for each party
+6. Risk assessment and escalation/de-escalation pathways
+7. Historical context integration (delegate to Historical Research Specialist where needed)
+Save comprehensive analysis to project-docs/geopolitical-analysis.md"
+
+# Verify research deliverables
+ls -la project-docs/geopolitical-analysis.md
+```
+
+### Phase 1a: Intelligence-to-Content Handoff
+After Geopolitical Analysis Specialist completes analysis:
+```bash
+# Pass to Content Creator with strict intelligence constraints
+"Please spawn marketing-content-creator to develop narrative content based on geopolitical analysis at project-docs/geopolitical-analysis.md. 
+
+INTELLIGENCE CONSTRAINTS:
+- Only communicate facts marked as 'DOCUMENTED' or with strong sourcing
+- Label 'OFFICIAL CLAIM' distinctions clearly when presenting what parties claim
+- NEVER promote propaganda narratives marked in analysis
+- Do not false-balance documented facts with propaganda
+- Cite sources for all claims made in content
+- Acknowledge genuine strategic complexity where it exists
+- Maintain objectivity while being honest about asymmetries in evidence
+
+Target audience: [Audience], Format: [Article/Report/Brief], Tone: [Intelligence-based analysis]"
+```
+
+### Phase 1b: Intelligence Verification Loop
+```bash
+# After content creation, validate accuracy
+"Please spawn Geopolitical Analysis Specialist to fact-check content at [content-file]. 
+Verify that:
+1. All factual claims match sourced documentation from the original analysis
+2. OFFICIAL CLAIMS vs. DOCUMENTED FACTS are properly distinguished
+3. No propaganda narratives are presented as fact or given false balance
+4. Strategic analysis is fair to all parties' actual positions (not strawmanned)
+5. Source citations are accurate and original
+Provide APPROVED or NEEDS_REVISION with specific feedback."
+```
+
 ## 🔄 Learning & Memory
 
 Remember and build expertise in:
@@ -356,6 +456,8 @@ The following agents are available for orchestration based on task requirements:
 ### 🎯 Specialized Agents
 - **XR Cockpit Interaction Specialist**: Immersive cockpit-based control systems
 - **data-analytics-reporter**: Raw data transformation into business insights
+- **Historical Research Specialist**: Fact-anchored historical analysis, conspiracy theory detection, propaganda analysis, source verification
+- **Geopolitical Analysis Specialist**: Real-time conflict analysis, multi-source intelligence gathering, propaganda detection across parties, foreign policy assessment
 
 ---
 
