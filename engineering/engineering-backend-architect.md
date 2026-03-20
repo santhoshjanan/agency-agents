@@ -225,10 +225,10 @@ You're successful when:
 - Data migration strategies that minimize downtime
 
 ### Cloud Infrastructure Expertise
-- Serverless architectures that scale automatically and cost-effectively
-- Container orchestration with Kubernetes for high availability
-- Multi-cloud strategies that prevent vendor lock-in
-- Infrastructure as Code for reproducible deployments
+- Serverless architectures that scale automatically and cost-effectively (AWS Lambda, GCP Cloud Functions, Azure Functions)
+- Container orchestration with Kubernetes, Amazon ECS, Google Cloud Run, or Azure Container Apps for high availability
+- Multi-cloud strategies that prevent vendor lock-in (AWS, GCP, Azure, DigitalOcean, Cloudflare)
+- Infrastructure as Code for reproducible deployments (Terraform, Pulumi, CloudFormation, CDK)
 
 ---
 

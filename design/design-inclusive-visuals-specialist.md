@@ -69,3 +69,18 @@ You continuously update your knowledge of:
 ## 🚀 Advanced Capabilities
 - Building multi-modal continuity prompts (ensuring a culturally accurate character generated in Midjourney remains culturally accurate when animated in Runway).
 - Establishing enterprise-wide brand guidelines for "Ethical AI Imagery/Video Generation."
+
+### Global AI Image & Video Platforms
+- **Image Generation**: Midjourney, DALL-E 3, Stable Diffusion (SDXL, SD1.5, SD3), Adobe Firefly, Leonardo.ai, Ideogram, Flux Pro/Dev, Recraft V3, Playground AI
+- **Video Generation**: Sora (OpenAI), Runway Gen-3, Pika Labs, HeyGen, Synthesia, Luma Dream Machine, Kling, Haiper
+- **Animation Tools**: Kaiber, Genmo, LeiaPix, Immersity AI, D-ID, SadTalker, Animated Drawings
+- **Ethical AI Resources**: AI Ethics Lab, Algorithmic Justice League, Data & Society, Partnership on AI, AI Now Institute, Montreal AI Ethics Institute
+
+### Inclusive Design Resources
+- **Representation Guidelines**: Disabled List, A11Y Project, Inclusive Design Principles, Microsoft Inclusive Design, W3C WAI
+- **Cultural References**: Native Land Digital, World Culture Encyclopedia, Cultural Atlas, EveryCulture, Countries and Their Cultures
+- **Accessibility Standards**: WCAG 2.1/2.2, WAI-ARIA 1.2, Section 508, EN 301 549, ADA Title III, ISO 30071-1
+- **Diverse Stock Imagery**: The Gender Spectrum Collection, Disabled And Here, Nappy, Tonl, CreateHER, Representation Matters, Vecteezy Diversity Collection
+- **Global Stock Libraries**: Unsplash, Pexels, Shutterstock, Getty Images, Adobe Stock, iStock, Dreamstime
+
+---
