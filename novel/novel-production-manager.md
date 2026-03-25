@@ -57,6 +57,9 @@ After each iteration, record in session memory:
 | Foundation | lore_score | > 7.0 | Iterate |
 | Drafting | chapter_score | > 6.0 | Retry (max 5) |
 | Revision | novel_score | plateau | Continue/Stop |
+| Revision | literary_critic_stars | >= 4.0 | Retry revision |
+| Revision | proofreading_critical | = 0 | Fix before export |
+| Revision | adversarial_verdict | PASS | Address contradictions |
 | All | slop_penalty | < 2.0 | Fix slop |
 
 ### Rule 5: Parallel Processing
@@ -84,7 +87,14 @@ Maintain in session memory:
   "novel_score": 0.0,
   "revision_cycle": 0,
   "prev_novel_score": 0.0,
-  "debts": []
+  "debts": [],
+  "literary_critic_gate": {
+    "passed": false,
+    "proofreading": {"critical": 0, "moderate": 0, "minor": 0},
+    "adversarial": {"verdict": "PENDING", "contradictions": 0},
+    "critical_review": {"stars": 0.0, "rating": "☆☆☆☆☆"},
+    "literary_criticism": {"thematic_depth": 0.0, "framework": "N/A"}
+  }
 }
 ```
 
@@ -106,6 +116,11 @@ Maintain in session memory:
 | Revision | Generate brief | Revision Brief Generator |
 | Revision | Rewrite chapter | Chapter Reviser |
 | Revision | Full novel eval | Novel Evaluator |
+| Revision | **Literary criticism** | **Literary Critic** (deep textual analysis, theoretical frameworks, intertextual connections) |
+| Revision | **Proofreading** | **Literary Critic** (technical correctness, grammar, punctuation, consistency, style guide) |
+| Revision | **Critical review** | **Literary Critic** (balanced assessment, star rating, genre positioning) |
+| Revision | **Adversarial review** | **Literary Critic** (stress-testing, contradiction finding, structural integrity test) |
+| Revision | **Literary Critic Gate** | **Literary Critic** (4-mode parallel execution, quality gate enforcement) |
 | Export | Rebuild outline | Outline Rebuilder |
 | Export | Rebuild summaries | Summary Rebuilder |
 | Export | Assemble manuscript | Manuscript Assembler |
@@ -169,19 +184,59 @@ Maintain in session memory:
    e. Chapter Reviser → fix
    f. COMMIT "review round N: revise ch X"
 
-4. Update state.phase = "export"
+4. Literary Critic Integration (Mandatory Pre-Export Gate):
+   a. [PARALLEL - Run all 4 modes in parallel]:
+      - Literary Critic (Proofreading Mode) → proofreading-report.md
+        * Technical correctness: grammar, punctuation, consistency
+        * MUST PASS: Zero critical issues for export approval
+      - Literary Critic (Adversarial Mode) → adversarial-review.md
+        * Stress-test: contradictions, weakest links, alternative readings
+        * Verdict: "Withstands scrutiny" or "Collapses under examination"
+      - Literary Critic (Critical Review Mode) → critical-review.md
+        * Balanced assessment with star rating (★ to ★★★★★)
+        * MUST PASS: Stars >= 4.0 for export approval
+      - Literary Critic (Literary Criticism Mode) → literary-analysis.md
+        * Deep thematic analysis with theoretical framework
+        * Optional for genre fiction, mandatory for literary fiction
+   b. Aggregate all Literary Critic outputs:
+      - Parse proofreading issues: critical_count, moderate_count, minor_count
+      - Parse adversarial verdict: structural_integrity [PASS/FAIL]
+      - Parse critical review: star_rating [1-5]
+      - Parse literary criticism: thematic_depth_score [0-10]
+   c. Literary Critic Quality Gate:
+      - IF critical_count > 0: FAIL → return to revision cycle 1
+      - IF star_rating < 4.0: FAIL → return to revision cycle 1
+      - IF adversarial_verdict = "Collapses": FAIL → return to revision cycle 1
+      - IF ALL PASS: COMMIT "literary critic gate passed"
+   d. Update state.literary_critic_scores:
+      ```json
+      {
+        "proofreading": {"critical": 0, "moderate": N, "minor": N},
+        "adversarial": {"verdict": "PASS", "contradictions": 0},
+        "critical_review": {"stars": 4.5, "rating": "★★★★☆"},
+        "literary_criticism": {"thematic_depth": 8.2}
+      }
+      ```
+
+5. Update state.phase = "export"
 ```
 
 ### Phase 4: Export
 ```
-1. [PARALLEL]:
+1. Verify Literary Critic Gate passed:
+   - Check literary_critic_gate.passed = true
+   - Verify proofreading.critical = 0
+   - Verify adversarial.verdict = "PASS"
+   - Verify critical_review.stars >= 4.0
+2. [PARALLEL]:
    - Outline Rebuilder
    - Summary Rebuilder
    - Visual Style Deriver
-2. Manuscript Assembler → manuscript.md
-3. Audiobook Script Generator (optional)
-4. **HUMAN CHECKPOINT**: Request approval before final commit
-5. IF approved: COMMIT "export: [title] — [word_count] words"
+3. Manuscript Assembler → manuscript.md
+4. Audiobook Script Generator (optional)
+5. **HUMAN CHECKPOINT**: Request approval before final commit
+6. IF approved: COMMIT "export: [title] — [word_count] words"
+7. ELSE: RETURN TO REVISION (address Literary Critic feedback)
 ```
 
 ## Decision Framework
@@ -218,6 +273,10 @@ ESCALATE to user if:
 - **Delegation logs**: "→ Chapter Drafter: ch_05"
 - **Score reports**: "Ch 5: voice=7, beats=6, prose=5.5 → overall=6.2"
 - **Decision calls**: "DISCARD: score 5.8 < prev 6.1"
+- **Literary Critic Gate**: "=== LITERARY CRITIC GATE ==="
+- **LC mode spawning**: "[PARALLEL] → Literary Critic (Proofreading/Adversarial/Critical/Criticism)"
+- **LC results**: "LC Gate: proofreading=PASS (0 critical), adversarial=PASS, stars=4.5, thematic=8.2"
+- **LC decision**: "LITERARY_CRITIC_GATE_PASSED → Advance to Export" or "LITERARY_CRITIC_GATE_FAILED → Return to Revision"
 
 ## Success Metrics
 
